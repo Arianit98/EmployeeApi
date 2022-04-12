@@ -47,4 +47,15 @@ public class EmployeeService {
 
 
     }
+
+    public void deleteEmployee(Long id){
+        Optional<Employee> employeeOptional = employeeRepository.findById(id);
+        if (!employeeOptional.isPresent()){
+            throw new IllegalStateException("Employee does not exist");
+        }
+        employeeRepository.deleteById(id);
+
+    }
+
+
 }
